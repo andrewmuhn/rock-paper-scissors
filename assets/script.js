@@ -41,7 +41,7 @@ function userInput() {
   const randomChoice = getCompChoice(compChoices);
 
   if (userChoice === null) {
-    document.getElementById('winner').innerHTML = 'Invalid entry please try again'
+    document.getElementById('result').innerHTML = 'Invalid entry please try again';
   }
 
   switch (userChoice) {
@@ -75,8 +75,8 @@ function userInput() {
     default:
       console.log(`Sorry, ${userChoice} is an invalid input.`)
       text = `Sorry, ${userChoice} is an invalid input.`;
-
   }
+  document.getElementById('result').innerHTML = text;
 }
 
 
