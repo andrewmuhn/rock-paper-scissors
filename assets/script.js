@@ -98,6 +98,9 @@ function rockPaperScissors() {
     document.getElementById('result').innerHTML = text;
     console.log(text);
     alert(text);
+    scoreBoard.losses = 0;
+    scoreBoard.wins = 0;
+    scoreBoard.ties = 0;
     return;
   }
 }
