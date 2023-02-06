@@ -40,8 +40,13 @@ function userInput() {
   }
   const randomChoice = getCompChoice(compChoices);
 
+  console.log(randomChoice);
+
   if (userChoice === null) {
     document.getElementById('result').innerHTML = 'Invalid entry please try again';
+  } else if (userChoice === randomChoice) {
+    console.log(`A classic ${userChoice} ${randomChoice} stalemate.`);
+    text = `A classic ${userChoice} ${randomChoice} stalemate.`;
   }
 
   switch (userChoice) {
@@ -77,6 +82,14 @@ function userInput() {
       text = `Sorry, ${userChoice} is an invalid input.`;
   }
   document.getElementById('result').innerHTML = text;
+  alert(text);
+  if (confirm("Play again?") === true) {
+    userInput();
+  } else {
+    text = `Let's play again soon`;
+    alert(text);
+    return;
+  }
 }
 
 
