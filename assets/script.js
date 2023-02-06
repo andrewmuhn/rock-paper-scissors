@@ -61,31 +61,36 @@ function rockPaperScissors() {
     case 'R':
       if (randomChoice === 'S') {
         text = `${userChoice} crushes ${randomChoice}, you win!`;
+        scoreBoard.wins = scoreBoard.wins + 1;
       } else if (randomChoice === 'P') {
         text = `${randomChoice} covers ${userChoice}, better luck next time!`;
+        scoreBoard.losses = scoreBoard.losses + 1;
       }
       break;
     case 'P':
       if (randomChoice === 'R') {
         text = `${userChoice} covers ${randomChoice}, you win!`;
+        scoreBoard.wins = scoreBoard.wins + 1;
       } else if (randomChoice === 'S') {
         text = `${randomChoice} cuts ${userChoice}, better luck next time!`;
+        scoreBoard.losses = scoreBoard.losses + 1;
       }
       break;
     case 'S':
       if (randomChoice === 'P') {
         text = `${userChoice} cuts ${randomChoice}, you win!`;
+        scoreBoard.wins = scoreBoard.wins + 1;
       } else if (randomChoice === 'R') {
         text = `${randomChoice} crushes ${userChoice}, better luck next time!`;
+        scoreBoard.losses = scoreBoard.losses + 1;
       }
       break;
     default:
       text = `Sorry, '${userChoice}' is an invalid input.`;
   }
 
-  console.log(scoreBoard.ties);
   console.log(text);
-  alert(text);
+  alert(`${text} \nWins: ${scoreBoard.wins} \nLosses: ${scoreBoard.losses} \nTies: ${scoreBoard.ties}`);
   if (confirm("Play again?") === true) {
     rockPaperScissors();
   } else {
