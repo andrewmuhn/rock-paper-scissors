@@ -34,7 +34,7 @@ function rockPaperScissors() {
 
   // ! changes the value from a string to 'function toUpperCase() { [native code] }'
   // TODO: refactor code to keep the return value from prompt a string but still have it be uppercase
-  // userChoice = userChoice.toUpperCase;
+// userChoice = userChoice.toUpperCase;
 
   function getCompChoice(arr) {
     const randomIndex = Math.floor(Math.random() * arr.length);
@@ -56,6 +56,7 @@ function rockPaperScissors() {
   }
 
   else if (userChoice === randomChoice) {
+
     text = `A classic ${userChoice} ${randomChoice} stalemate.`;
     scoreBoard.ties = scoreBoard.ties + 1;
   } else if (userChoice === 'R' && randomChoice === 'S' || userChoice === 'P' && randomChoice === 'R' || userChoice === 'S' && randomChoice === 'P') {
