@@ -31,6 +31,9 @@ function rockPaperScissors() {
 
   //dialouge box asking for users input
   let userChoice = prompt('R, P, or S', 'R');
+
+  // ! changes the value from a string to 'function toUpperCase() { [native code] }'
+  // TODO: refactor code to keep the return value from prompt a string but still have it be uppercase
   // userChoice = userChoice.toUpperCase;
 
   function getCompChoice(arr) {
@@ -52,47 +55,53 @@ function rockPaperScissors() {
     return;
   }
 
-  console.log(`Computer chose: ${randomChoice}`);
-  console.log(`You chose: ${userChoice}`)
-
-  if (userChoice === randomChoice) {
+  else if (userChoice === randomChoice) {
     text = `A classic ${userChoice} ${randomChoice} stalemate.`;
     scoreBoard.ties = scoreBoard.ties + 1;
+  } else if (userChoice === 'R' && randomChoice === 'S' || userChoice === 'P' && randomChoice === 'R' || userChoice === 'S' && randomChoice === 'P') {
+    text = `You won!!`;
+    scoreBoard.wins = scoreBoard.wins + 1;
+  } else {
+    text = `You lose, better luck next time.`;
+    scoreBoard.losses = scoreBoard.losses + 1;
   }
 
-  switch (userChoice) {
-    case 'R':
-      if (randomChoice === 'S') {
-        text = `${userChoice} crushes ${randomChoice}, you win!`;
-        scoreBoard.wins = scoreBoard.wins + 1;
-      } else if (randomChoice === 'P') {
-        text = `${randomChoice} covers ${userChoice}, better luck next time!`;
-        scoreBoard.losses = scoreBoard.losses + 1;
-      }
-      break;
-    case 'P':
-      if (randomChoice === 'R') {
-        text = `${userChoice} covers ${randomChoice}, you win!`;
-        scoreBoard.wins = scoreBoard.wins + 1;
-      } else if (randomChoice === 'S') {
-        text = `${randomChoice} cuts ${userChoice}, better luck next time!`;
-        scoreBoard.losses = scoreBoard.losses + 1;
-      }
-      break;
-    case 'S':
-      if (randomChoice === 'P') {
-        text = `${userChoice} cuts ${randomChoice}, you win!`;
-        scoreBoard.wins = scoreBoard.wins + 1;
-      } else if (randomChoice === 'R') {
-        text = `${randomChoice} crushes ${userChoice}, better luck next time!`;
-        scoreBoard.losses = scoreBoard.losses + 1;
-      }
-      break;
-    default:
-      text = `Sorry, '${userChoice}' is an invalid input.`;
-  }
+
+  // ! uses switch case to iterate through responses and give custom dialog based off of each game outcomes.
+  // switch (userChoice) {
+  //   case 'R':
+  //     if (randomChoice === 'S') {
+  //       text = `${userChoice} crushes ${randomChoice}, you win!`;
+  //       scoreBoard.wins = scoreBoard.wins + 1;
+  //     } else if (randomChoice === 'P') {
+  //       text = `${randomChoice} covers ${userChoice}, better luck next time!`;
+  //       scoreBoard.losses = scoreBoard.losses + 1;
+  //     }
+  //     break;
+  //   case 'P':
+  //     if (randomChoice === 'R') {
+  //       text = `${userChoice} covers ${randomChoice}, you win!`;
+  //       scoreBoard.wins = scoreBoard.wins + 1;
+  //     } else if (randomChoice === 'S') {
+  //       text = `${randomChoice} cuts ${userChoice}, better luck next time!`;
+  //       scoreBoard.losses = scoreBoard.losses + 1;
+  //     }
+  //     break;
+  //   case 'S':
+  //     if (randomChoice === 'P') {
+  //       text = `${userChoice} cuts ${randomChoice}, you win!`;
+  //       scoreBoard.wins = scoreBoard.wins + 1;
+  //     } else if (randomChoice === 'R') {
+  //       text = `${randomChoice} crushes ${userChoice}, better luck next time!`;
+  //       scoreBoard.losses = scoreBoard.losses + 1;
+  //     }
+  //     break;
+  //   default:
+  //     text = `Sorry, '${userChoice}' is an invalid input.`;
+  // }
 
   console.log(text);
+  alert(`Computer chose: ${randomChoice} \nYou chose: ${userChoice}`)
   alert(`${text} \nWins: ${scoreBoard.wins} \nLosses: ${scoreBoard.losses} \nTies: ${scoreBoard.ties}`);
   if (confirm("Play again?") === true) {
     rockPaperScissors();
