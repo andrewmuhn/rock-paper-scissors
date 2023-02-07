@@ -46,6 +46,9 @@ function rockPaperScissors() {
     text = `It's okay, you didn't have to play`;
     document.getElementById('result').innerHTML = text;
     console.log(text);
+    scoreBoard.losses = 0;
+    scoreBoard.wins = 0;
+    scoreBoard.ties = 0;
     return;
   }
 
