@@ -44,7 +44,7 @@ function rockPaperScissors() {
   const randomChoice = getCompChoice(compChoices);
 
 
-
+  //if the user hits cancel instead of an input
   if (userChoice == null) {
     text = `It's okay, you didn't have to play`;
     document.getElementById('result').innerHTML = text;
@@ -69,6 +69,12 @@ function rockPaperScissors() {
   // }
 
 
+  //case if the game is a tie
+  else if (userChoice === randomChoice) {
+
+    text = `A classic ${userChoice} ${randomChoice} stalemate.`;
+    scoreBoard.ties = scoreBoard.ties + 1;
+  }
   // ! uses switch case to iterate through responses and give custom dialog based off of each game outcomes.
   switch (userChoice) {
     case 'R':
@@ -117,6 +123,7 @@ function rockPaperScissors() {
     scoreBoard.ties = 0;
     return;
   }
+  console.log(text);
 }
 
 
